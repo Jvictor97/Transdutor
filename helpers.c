@@ -4,6 +4,7 @@ void concat(char [], char []);
 void bind(char[], char[], char);
 void copy(char[], char[]);
 void intToChar(int, char[]);
+bool iguais(char[], char[]);
 
 // Concatena a string 'b' na string 'a' 
 void concat(char a[], char b[]){
@@ -67,3 +68,7 @@ void intToChar(int n, char v[]){
 		v[1] = n % 10 + '0';
 	}
 }
+
+bool iguais(char a[], char b[]){
+}
+

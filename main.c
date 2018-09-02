@@ -4,40 +4,113 @@
 // Adicionando arquivo de funções auxiliares
 #include "helpers.c"
 
-int main(){
+char TempS[11] = 0;
+char buff[200];
+char e[100];
+char m[50][11];
+int TempN;
+int p = 0, idx = -1;
 
-    char e[100];
-    int p = 0;
+void S1();
+void S2();
+void S3();
+void S4();
+void S5();
+void S6();
+void sbuff(int);
+void ibuff(int);
+
+int main(){
 
     printf("Digite a entrada: ");
     gets(e);
     goto E0;
 
 E0:
-    if((e[p] >= 'a' && e[p] <= 'z') || (e[p] >= 'A' && e[p] <= 'Z'))
-        exit(0);
+    if((e[p] >= 'a' && e[p] <= 'z') || (e[p] >= 'A' && e[p] <= 'Z')){
+        S1();
+        goto E1;
+    }
     else
-        if(e[p] >= 0 && e[p] <= 9)
-            exit(0);
+        if(e[p] >= 0 && e[p] <= 9){
+            S4();
+            goto E2;
+        }
         else
+            if(e[p] == ' '){
+                p++;
+                goto E0;
+            }
+            else 
+                if(e[p] == '\0')
+                    goto SAIDA;
+
 E1:
+    if((e[p] >= 'a' && e[p] <= 'z') || (e[p] >= 'A' && e[p] <= 'Z') || (e[p] >= 0 && e[p] <= 9)){
+        S2();
+        goto E1;
+    }
+    else
+        if(e[p] == '\0'){
+            S3();
+            goto E0;
+        }
 
 E2:
-
-S1:
-
-S2:
-
-S3:
-
-S4:
-
-S5:
-
-S6:
-
+    if(e[p] >= 0 && e[p] <= 9){
+        S5();
+        goto E2;
+    }
+    else
+        if(e[p] == '\0'){
+            S6();
+            goto E0;
+        }
+        
 SAIDA:
+    printf("%s", buff);
+    printf("\nTabela de Variaveis:\n");
+    for(int i = 0; m[i][0] != 0; i++){
+        printf("    %d....%s\n", i, m[i]);
+    }
 
     system("pause");
     return 0;
+}
+
+void S1(){
+    concat(TempS, e[p]);
+    p++;
+}
+
+void S2(){
+    concat(TempS, e[p]);
+    p++;
+}
+
+void S3(){
+    for(int i = 0; i < idx; i++){
+        if(iguais(TempS, m[i])){
+            sbuff(i);
+        }
+    }
+}
+
+void S4(){
+
+}
+
+void S5(){
+
+}
+
+void S6(){
+
+}
+
+void ibuff(int i){
+    char value[2], pos[10] = "V($) ";
+    intToChar(i, value);
+    bind(pos, value, '$');
+    concat(buff, pos);
 }
