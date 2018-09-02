@@ -5,7 +5,7 @@ void bind(char[], char[], char);
 void copy(char[], char[]);
 void intToChar(int, char[]);
 
-
+// Concatena a string 'b' na string 'a' 
 void concat(char a[], char b[]){
 	int i, j;
 	for(i = 0; a[i] != '\0'; i++);
