@@ -11,7 +11,7 @@ respectivos tipos de acordo com a entrada fornecida</p>
 <h2>Saída Correspondente:</h2>
 
 ```
- V(0) N(25) V(1)
+ V(0) N(25) V(1) V(0)
 
 Tabela de Variaveis:
     0....A2
