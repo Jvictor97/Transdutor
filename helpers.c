@@ -1,53 +1,19 @@
 #include <stdbool.h>
 
-void concat(char [], char []);
+void concat(char [], char);
 void bind(char[], char[], char);
 void copy(char[], char[]);
 void intToChar(int, char[]);
 bool iguais(char[], char[]);
 
 // Concatena a string 'b' na string 'a' 
-void concat(char a[], char b[]){
+void concat(char a[], char b){
 	int i, j;
 	for(i = 0; a[i] != '\0'; i++);
 
-	for(j = 0; b[j] != '\0'; j++){
-		a[i+j] = b[j];
-	}
+	a[i] = b;
 
-	a[i+j] = '\0';
-}
-
-void bind(char string[] , char replace[], char token){
-
-	char before[500] = "";
-	char after[500] = "";	
-	bool copy = false;
-	int it = 0;
-
-	for(int i = 0; string[i] != token; i++){
-		before[i] = string[i];		
-	}
-
-	concat(before, replace);
-
-	int i;
-
-	for(i = 0; string[i] != 0; i++){
-		if(copy){
-			after[it] = string[i];
-			it++;
-		}
-		if(string[i] == token)
-			copy = true;
-	}
-
-	after[i] = '\0';
-
-	concat(before, after);
-	string[0] = '\0';
-
-	concat(string, before);	
+	a[i+1] = '\0';
 }
 
 void copy(char destino[], char origem[]){
@@ -70,5 +36,14 @@ void intToChar(int n, char v[]){
 }
 
 bool iguais(char a[], char b[]){
+	int c;
+	for(c = 0; a[c] != 0; c++){
+		if(a[c] != b[c])
+			return false;
+	}
+	if(a[c] != b[c])
+		return false;
+	else
+		return true;	
 }
 

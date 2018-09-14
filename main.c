@@ -4,7 +4,7 @@
 // Adicionando arquivo de funções auxiliares
 #include "helpers.c"
 
-char TempS[11] = 0;
+char TempS[11];
 char buff[200];
 char e[100];
 char m[50][11];
@@ -17,8 +17,8 @@ void S3();
 void S4();
 void S5();
 void S6();
-void sbuff(int);
-void ibuff(int);
+void printVar(int);
+void printInt(int);
 
 int main(){
 
@@ -32,7 +32,7 @@ E0:
         goto E1;
     }
     else
-        if(e[p] >= 0 && e[p] <= 9){
+        if(e[p] >= '0' && e[p] <= '9'){
             S4();
             goto E2;
         }
@@ -46,26 +46,24 @@ E0:
                     goto SAIDA;
 
 E1:
-    if((e[p] >= 'a' && e[p] <= 'z') || (e[p] >= 'A' && e[p] <= 'Z') || (e[p] >= 0 && e[p] <= 9)){
+    if((e[p] >= 'a' && e[p] <= 'z') || (e[p] >= 'A' && e[p] <= 'Z') || (e[p] >= '0' && e[p] <= '9')){
         S2();
         goto E1;
     }
-    else
-        if(e[p] == '\0'){
-            S3();
-            goto E0;
-        }
+    else{
+        S3();
+        goto E0;
+    }
 
 E2:
-    if(e[p] >= 0 && e[p] <= 9){
+    if(e[p] >= '0' && e[p] <= '9'){
         S5();
         goto E2;
     }
-    else
-        if(e[p] == '\0'){
-            S6();
-            goto E0;
-        }
+    else{
+        S6();
+        goto E0;
+    }
         
 SAIDA:
     printf("%s", buff);
@@ -74,7 +72,7 @@ SAIDA:
         printf("    %d....%s\n", i, m[i]);
     }
 
-    system("pause");
+    //system("pause");
     return 0;
 }
 
@@ -91,26 +89,36 @@ void S2(){
 void S3(){
     for(int i = 0; i < idx; i++){
         if(iguais(TempS, m[i])){
-            sbuff(i);
+            printVar(i);
+            return;
         }
     }
+    p++;
+    idx++;
+    copy(m[idx], TempS);
+    printVar(idx);
+    TempS[0] = '\0';
 }
 
 void S4(){
-
+    TempN = e[p] - '0';
+    p++;
 }
 
 void S5(){
-
+    TempN = TempN * 10 + (e[p] - '0');
+    p++;
 }
 
 void S6(){
-
+    printInt(TempN);
+    p++;
 }
 
-void ibuff(int i){
-    char value[2], pos[10] = "V($) ";
-    intToChar(i, value);
-    bind(pos, value, '$');
-    concat(buff, pos);
+void printVar(int p){
+    printf("V(%d) ", p);
+}
+
+void printInt(int i){
+    printf("N(%d) ", i);
 }
