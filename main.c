@@ -1,3 +1,9 @@
+/*  Disciplina: CC6252 - Compiladores
+ *  Projeto II - Variáveis e Números
+ *  Desenvolvido por: João Victor Fernandes de Souza - RA: 22116012-0
+ *                    Marcus Vinicius Sato Moré      - RA: 22115003-0
+ */
+
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
@@ -22,8 +28,9 @@ void printInt(int);
 
 int main(){
 
-    printf("Digite a entrada: ");
+    printf("\nDigite a entrada: ");
     gets(e);
+    printf("\nSaida:\n");
     goto E0;
 
 E0:
@@ -67,11 +74,11 @@ E2:
         
 SAIDA:
     printf("%s", buff);
-    printf("\nTabela de Variaveis:\n");
+    printf("\n\nTabela de Variaveis:\n");
     for(int i = 0; m[i][0] != 0; i++){
         printf("    %d....%s\n", i, m[i]);
     }
-
+    printf("\n");
     //system("pause");
     return 0;
 }
