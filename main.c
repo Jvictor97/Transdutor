@@ -74,7 +74,9 @@ E2:
         
 SAIDA:
     printf("%s", buff);
-    printf("\n\nTabela de Variaveis:\n");
+    printf("\n");
+    if(idx >= 0)
+        printf("\nTabela de Variaveis:\n");
     for(int i = 0; m[i][0] != 0; i++){
         printf("    %d....%s\n", i, m[i]);
     }
@@ -94,9 +96,13 @@ void S2(){
 }
 
 void S3(){
-    for(int i = 0; i < idx; i++){
+    concat(TempS, '\0');
+
+    for(int i = 0; i <= idx; i++){
         if(iguais(TempS, m[i])){
             printVar(i);
+            TempS[0] = '\0';
+            p++;
             return;
         }
     }
